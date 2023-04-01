@@ -25,7 +25,7 @@ def test_normal_operation():
     controller.set_trajectory(np.array([[2.0, 3.0], [3.0, 0.0]]))
 
     controller.join()
-    print("Test complete")
+    print("Test2 complete")
 
     exit(0)
 

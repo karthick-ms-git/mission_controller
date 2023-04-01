@@ -9,7 +9,7 @@ from mission_controller.simulated_robot import SimulatedRobot, SimulatedRobotWit
 
 def test_normal_operation():
 
-    print("Test3 : checking the custom error")
+    print("Test4 : checking the custom error")
 
     simulated_robot = SimulatedRobotWithCommunicationDelay(np.array([2.0,1.0]))
 
