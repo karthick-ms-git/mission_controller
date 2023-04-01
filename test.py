@@ -26,7 +26,6 @@ def test_normal_operation():
 
     time.sleep(2)
 
-    controller.join()
     print("Test complete")
 
     exit(0)

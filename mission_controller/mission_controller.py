@@ -56,18 +56,24 @@ class MissionController:
     # checks for active thread if any and starts a new thread for
     # trajectory implementation
     def set_trajectory(self, trajectory):
+        
         if (self.thread_poll_position.is_alive()):
             print("- ABORTED: moving towards position ", 
                     self.trajectory[self.current_waypoint_idx], " -")
             print("- ABORTED: previous Trajectory at position ", self.robot.get_position(), " -")
-
+        
+        # setting stop flag for stopping the thread
         self.set_stop()
         if (self.thread_poll_position.is_alive()):
             self.thread_poll_position.join()
         self.reset_stop()
         self.trajectory = None
+
+        # input validation
         if not self.is_valid(trajectory):
             return
+        
+        # setting up of thread
         print("Setting up new trajectory")
         self.trajectory = trajectory
         self.current_waypoint_idx = 0
@@ -88,7 +94,10 @@ class MissionController:
             elif not self.trajectory is None and self.trajectory.shape[0] == 0:
                 return
             else:
+                # checks the position for last trajectory point 
+                # if not gives the trajectory points in sequence
                 if np.all(position == self.trajectory[-1]):
+                    print("Trajectory executed successfully")
                     self.finish_flag.set()
                     return
                 else:

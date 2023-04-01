@@ -17,7 +17,7 @@ def test_normal_operation():
 
     # set the first trajectory
 
-    controller.set_trajectory(np.array([[4.0,3.0], [5.0, 3.0]]))
+    controller.set_trajectory(np.array([[4.0,3.0], [5.0, 3.0],[1.0, 2.0]]))
     
     controller.finish_flag.wait()
 
